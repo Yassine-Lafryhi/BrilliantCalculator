@@ -3,33 +3,51 @@
 > A calculator (Basic, Scientific, Programmer) built with java using swing-gui framework
 
 ![](https://img.shields.io/badge/build-passing-brightgreen)
-![](https://img.shields.io/badge/license-Apache-blue)
+![](https://img.shields.io/badge/license-MIT-blue)
 ![](https://img.shields.io/badge/version-1.0.0-orange)
 
 ## Built With
 * [Swing-GUI]()
 ## Prerequisites
 
-- Install java :
+- Install JAVA :
 > On MAC OS using [Homebrew](https://brew.sh/) :
 ```shell
-brew install 
+brew tap adoptopenjdk/openjdk
+
+brew cask install adoptopenjdk8
 ```
 > On Linux (Ubuntu) :
 ```shell
-sudo apt-get install 
+sudo apt install openjdk-8-jdk
 ```
 > On Windows using [Chocolatey](https://chocolatey.org/) :
 ```shell
-choco install 
+choco install openjdk 
 ```
+
+- Install Jthe font saxmono.ttf :
+
 ## Screenshots
-
+> Basic view :
 ![](screenshots/ScreenShot1.png)
-
 ![](screenshots/ScreenShot2.png)
 
+> Scientific view :
+ ![](screenshots/ScreenShot3.png)
 
+
+> Programmer view :
+ ![](screenshots/ScreenShot4.png)
+
+
+## How to run
+> How to run :
+```shell
+cd ~/BrillantCalculator
+
+./gradlew
+```
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -41,7 +59,9 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 ## License
-[Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/)
+[MIT License](https://choosealicense.com/licenses/mit/)
+
+
 ## Contact
 - Yassine Lafryhi - [@YassineLafryhi](https://twitter.com/YassineLafryhi) - [y.lafryhi@gmail.com](mailto:y.lafryhi@gmail.com)
 - Project Link : [https://github.com/Yassine-Lafryhi/BrilliantCalculator](https://github.com/Yassine-Lafryhi/BrilliantCalculator)

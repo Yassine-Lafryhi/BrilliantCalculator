@@ -38,13 +38,9 @@ public class Main extends JFrame implements ActionListener {
         setResizable(false);
         jMaster = new JPanel();
         jLabelOuput = new JLabel("", SwingConstants.CENTER);
-
         getContentPane().add(jLabelOuput, BorderLayout.NORTH);
-
         JbnButtons = new JButton[20];
-        String fName = "/fonts/saxmono.ttf";
-        InputStream is = Main.class.getResourceAsStream(fName);
-        Font font = new Font ("saxmono", Font.PLAIN, 36);
+        Font font = new Font("saxmono", Font.PLAIN, 36);
 
         for (int i = 0; i <= 15; i++) {
             if (i == 10) {
@@ -100,34 +96,45 @@ public class Main extends JFrame implements ActionListener {
 
         } else {
             JButton jButton = (JButton) e.getSource();
-
             String buttonText = jButton.getText();
+
+            if (buttonText.contains("+") || buttonText.contains("-") || buttonText.contains("*") || buttonText.contains("/")) {
+                if (jLabelOuput.getText().split("\\+").length >= 2) {
+                    jLabelOuput.setText(findTheResultOf(jLabelOuput.getText()) + "");
+                } else if (jLabelOuput.getText().split("-").length >= 2) {
+                    jLabelOuput.setText(findTheResultOf(jLabelOuput.getText()) + "");
+                } else if (jLabelOuput.getText().split("\\*").length >= 2) {
+                    jLabelOuput.setText(findTheResultOf(jLabelOuput.getText()) + "");
+                } else if (jLabelOuput.getText().split("/").length >= 2) {
+                    jLabelOuput.setText(findTheResultOf(jLabelOuput.getText()) + "");
+
+                }
+            }
+
+
             jLabelOuput.setText(jLabelOuput.getText() + buttonText);
-            Font font = new Font ("saxmono", Font.PLAIN, 28);
+            Font font = new Font("saxmono", Font.PLAIN, 28);
             jLabelOuput.setFont(font);
         }
     }
 
-    private int findTheResultOf(String operation) {
-        int firstNumber, secondNumber, result = 0;
+    private long findTheResultOf(String operation) {
+        long firstNumber, secondNumber, result = 0;
         if (operation.contains("+")) {
-            firstNumber = Integer.parseInt(operation.split("\\+")[0]);
-            secondNumber = Integer.parseInt(operation.split("\\+")[1]);
+            firstNumber = Long.parseLong(operation.split("\\+")[0]);
+            secondNumber = Long.parseLong(operation.split("\\+")[1]);
             result = firstNumber + secondNumber;
-        }
-        else  if (operation.contains("-")) {
-            firstNumber = Integer.parseInt(operation.split("-")[0]);
-            secondNumber = Integer.parseInt(operation.split("-")[1]);
+        } else if (operation.contains("-")) {
+            firstNumber = Long.parseLong(operation.split("-")[0]);
+            secondNumber = Long.parseLong(operation.split("-")[1]);
             result = firstNumber - secondNumber;
-        }
-        else  if (operation.contains("*")) {
-            firstNumber = Integer.parseInt(operation.split("\\*")[0]);
-            secondNumber = Integer.parseInt(operation.split("\\*")[1]);
+        } else if (operation.contains("*")) {
+            firstNumber = Long.parseLong(operation.split("\\*")[0]);
+            secondNumber = Long.parseLong(operation.split("\\*")[1]);
             result = firstNumber * secondNumber;
-        }
-        else  if (operation.contains("/")) {
-            firstNumber = Integer.parseInt(operation.split("/")[0]);
-            secondNumber = Integer.parseInt(operation.split("/")[1]);
+        } else if (operation.contains("/")) {
+            firstNumber = Long.parseLong(operation.split("/")[0]);
+            secondNumber = Long.parseLong(operation.split("/")[1]);
             result = firstNumber / secondNumber;
         }
         return result;
