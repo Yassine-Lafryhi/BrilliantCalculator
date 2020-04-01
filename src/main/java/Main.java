@@ -1,19 +1,12 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
+import java.io.InputStream;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class Main extends JFrame implements ActionListener {
     private JPanel contentPane;
-    private JMenu jMenuFile, jMenuHelp;
     private JPanel jMaster;
     private JLabel jLabelOuput;
     private JButton JbnButtons[];
@@ -32,42 +25,28 @@ public class Main extends JFrame implements ActionListener {
     }
 
 
-    /**
-     * Create the frame.
-     */
     public Main() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - 600) / 2);
+        int y = (int) ((dimension.getHeight() - 440) / 2);
+        setBounds(x, y, 600, 440);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
-
-        // MEnu File
-        jMenuFile = new JMenu("File");
-
-
-        // MEnu Help
-        jMenuHelp = new JMenu("Help");
-
-
-        // Menu Bar
-        JMenuBar mb = new JMenuBar();
-        mb.add(jMenuFile);
-        mb.add(jMenuHelp);
-        setJMenuBar(mb);
-
-
-        // frame componant
+        setResizable(false);
         jMaster = new JPanel();
-        jLabelOuput = new JLabel("");
+        jLabelOuput = new JLabel("", SwingConstants.CENTER);
 
-        // add our componante to fram
         getContentPane().add(jLabelOuput, BorderLayout.NORTH);
 
         JbnButtons = new JButton[20];
+        String fName = "/fonts/saxmono.ttf";
+        InputStream is = Main.class.getResourceAsStream(fName);
+        Font font = new Font ("saxmono", Font.PLAIN, 36);
 
-        for (int i = 0; i <= 14; i++) {
+        for (int i = 0; i <= 15; i++) {
             if (i == 10) {
                 JbnButtons[i] = new JButton("=");
             } else if (i == 11)
@@ -78,35 +57,36 @@ public class Main extends JFrame implements ActionListener {
                 JbnButtons[i] = new JButton("/");
             else if (i == 14)
                 JbnButtons[i] = new JButton("*");
+            else if (i == 15)
+                JbnButtons[i] = new JButton("AC");
             else
                 JbnButtons[i] = new JButton(String.valueOf(i));
+
+            JbnButtons[i].setPreferredSize(new Dimension(40, 80));
+            JbnButtons[i].setFont(font);
+
+
         }
 
 
         JPanel jPLButtons = new JPanel();
         jPLButtons.setLayout(new GridLayout(4, 5, 2, 2));
 
-        // add button to the jplbuttons
-        for (int i = 0; i <= 14; i++) {
+        for (int i = 0; i <= 15; i++) {
             jPLButtons.add(JbnButtons[i]);
         }
 
-        // JPANEL MASET
         jMaster.setLayout(new BorderLayout());
         jMaster.add(jPLButtons, BorderLayout.SOUTH);
 
-
-        // add componant to frame
         getContentPane().add(jMaster, BorderLayout.SOUTH);
         requestFocus();
 
-        //add listenner to button
-        for (int i = 0; i <= 14; i++) {
+        for (int i = 0; i <= 15; i++) {
             JbnButtons[i].addActionListener(this);
         }
 
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -114,17 +94,43 @@ public class Main extends JFrame implements ActionListener {
 
             jLabelOuput.setText(findTheResultOf(jLabelOuput.getText()) + "");
 
+        } else if (((JButton) e.getSource()).getText().equals("AC")) {
+
+            jLabelOuput.setText("");
+
         } else {
             JButton jButton = (JButton) e.getSource();
 
             String buttonText = jButton.getText();
             jLabelOuput.setText(jLabelOuput.getText() + buttonText);
+            Font font = new Font ("saxmono", Font.PLAIN, 28);
+            jLabelOuput.setFont(font);
         }
     }
 
     private int findTheResultOf(String operation) {
-        //TODO:
-        return 0;
+        int firstNumber, secondNumber, result = 0;
+        if (operation.contains("+")) {
+            firstNumber = Integer.parseInt(operation.split("\\+")[0]);
+            secondNumber = Integer.parseInt(operation.split("\\+")[1]);
+            result = firstNumber + secondNumber;
+        }
+        else  if (operation.contains("-")) {
+            firstNumber = Integer.parseInt(operation.split("-")[0]);
+            secondNumber = Integer.parseInt(operation.split("-")[1]);
+            result = firstNumber - secondNumber;
+        }
+        else  if (operation.contains("*")) {
+            firstNumber = Integer.parseInt(operation.split("\\*")[0]);
+            secondNumber = Integer.parseInt(operation.split("\\*")[1]);
+            result = firstNumber * secondNumber;
+        }
+        else  if (operation.contains("/")) {
+            firstNumber = Integer.parseInt(operation.split("/")[0]);
+            secondNumber = Integer.parseInt(operation.split("/")[1]);
+            result = firstNumber / secondNumber;
+        }
+        return result;
     }
 
 }
