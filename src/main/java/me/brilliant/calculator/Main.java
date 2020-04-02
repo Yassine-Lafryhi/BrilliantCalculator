@@ -103,9 +103,9 @@ public class Main implements ActionListener {
         Font font = new Font("saxmono", Font.PLAIN, 36);
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         String[] buttonsContent = {
-                "7", "8", "9", "AC", "4", "5", "(",
-                "6", "+", "1", "2", "3", "-", ")",
-                "0", "*", "/", "=", "cos", "sin", "sqrt",
+                "9", "8", "7", "6", "5", "4", "3",
+                "2", "1", "0", "sqrt", "AC", "(", ")",
+                "-", "*", "/", "+", "cos", "sin", "=",
                 "tan", "e", "ln", "abs", "x!", "sinh", "cbrt",
                 "cosh", "tanh", "1/x", "rad", "deg", "rand", "Del",
                 "%", ".", "x^2", "x^3", "pi", "phi", "nPr",
@@ -182,9 +182,9 @@ public class Main implements ActionListener {
         Font font = new Font("saxmono", Font.PLAIN, 36);
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         String[] buttonsContent = {
-                "7", "8", "9", "AC", "4", "5",
-                "6", "+", "1", "2", "3", "-",
-                "0", "*", "/", "=", "tobin", "todec",
+                "9", "8", "7", "6", "5", "4",
+                "3", "2", "1", "0", "AC", "-",
+                "+", "*", "/", "=", "tobin", "tooct",
                 "tohex", "and", "or", "not", "xor", "nor",
                 "nand", "tanh", ">>", "<<", "1's", "2's",
                 "x<<y", "y<<x", "A", "B", "C", "D",

@@ -107,10 +107,14 @@ public class Expression {
                         case "exp":
                             x = Math.exp(x);
                             break;
-                            //
                         case "tobin":
-                            System.out.println(x);
                             x = Double.parseDouble(Long.toBinaryString(Long.parseLong(String.valueOf((long)x))));
+                            break;
+                        case "tohex":
+                            x = Double.parseDouble(Long.toHexString(Long.parseLong(String.valueOf((long)x))));
+                            break;
+                        case "tooct":
+                            x = Double.parseDouble(Long.toOctalString(Long.parseLong(String.valueOf((long)x))));
                             break;
                         default:
                             throw new RuntimeException("Unknown function: " + func);

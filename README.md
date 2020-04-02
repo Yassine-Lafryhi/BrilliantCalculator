@@ -26,7 +26,7 @@ sudo apt install openjdk-8-jdk
 choco install openjdk 
 ```
 
-- Install Jthe font saxmono.ttf :
+- Install the font **saxmono.ttf** which is located in: src/main/resources/fonts
 
 ## Screenshots
 > Basic view :
@@ -40,14 +40,6 @@ choco install openjdk
 > Programmer view :
  ![](screenshots/ScreenShot4.png)
 
-
-## How to run
-> How to run :
-```shell
-cd ~/BrillantCalculator
-
-./gradlew
-```
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
